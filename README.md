@@ -284,7 +284,7 @@ Or the manual way:
 
 Verify the authority is in Chrome under Settings -> Show Advanced Settings -> Manage Certificates -> Authorities then expand "org-U.S. Government" and you should see a number of "DoD" certificates listed.
 
-# VMWare-Horizon
+# VMWare-Horizon (Legacy)
 
 Go to https://www.vmware.com/go/viewclients and download the latest 64 bit bundle
 
@@ -295,13 +295,30 @@ chmod +x VMware-Horizon-Client-2209-8.7.0-20616018.x64.bundle
 sudo ./VMware-Horizon-Client-2209-8.7.0-20616018.x64.bundle
 ```
 
-## Setup CAC login
+### Setup CAC login (VMWare-Horizon)
 
 Create a symlink to opensc-pkcs11.so
 
 ```
 sudo ln -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so /usr/lib/vmware/view/pkcs11/libopenscpkcs11.so
 ```
+
+## Omnissa-Horizon
+
+Go to https://https://customerconnect.omnissa.com/downloads/#all_products and download and install the latest 64 bit horizon client for your Linux distribution
+
+### Setup CAC login (Omnissa-Horizon)
+
+This process is documented here: https://docs.omnissa.com/bundle/HorizonClientLinuxGuideVmulti/page/ConfigureHorizonClientforSmartCardAuthentication.html
+The path needs to be slightly modified to accomodate the steps taken above.
+
+```
+# Create PKCS11 directory
+sudo mkdir /usr/lib/omnissa/horizon/pkcs11
+# Create symlink to opensc-pkcs11.so
+sudo ln -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so /usr/lib/omnissa/horizon/pkcs11/libopenscpkcs11.so
+```
+
 
 ## Import DoD Certificates
 
